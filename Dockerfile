@@ -38,6 +38,8 @@ RUN curl https://downloads.plex.tv/plex-keys/PlexSign.key | sudo apt-key add -
 RUN echo deb https://downloads.plex.tv/repo/deb public main | sudo tee /etc/apt/sources.list.d/plexmediaserver.list
 RUN apt update && apt install -y plexmediaserver
 
+RUN mv /usr/lib/plexmediaserver/Plex\ Media\ Server /usr/lib/plexmediaserver/plexmediaserver
+
 USER container
 ENV  USER container
 ENV  HOME /home/container
