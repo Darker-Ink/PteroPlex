@@ -40,13 +40,16 @@ RUN apt update && apt install -y plexmediaserver
 
 RUN mv /usr/lib/plexmediaserver/Plex\ Media\ Server /usr/lib/plexmediaserver/plexmediaserver
 
+COPY ./entrypoint.sh /entrypoint.sh
+COPY ./start.sh /start.sh
+
+RUN chmod +x /start.sh
+
 USER container
 ENV  USER container
 ENV  HOME /home/container
 
 WORKDIR /home/container
 
-COPY ./entrypoint.sh /entrypoint.sh
-COPY ./start.sh /start.sh
 
 CMD ["/bin/bash", "/entrypoint.sh"]
